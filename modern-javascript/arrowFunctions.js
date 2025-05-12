@@ -16,7 +16,7 @@ console.log(`The word "JavaScript" backwards is ${reverseString("JavaScript")}.`
 // First using the syntax closer to traditional 
 const revStrAnon = (str) => {
     return str.split("").reverse().join("");
-}; 
+};
 
 console.log(revStrAnon("mart"));
 
@@ -34,14 +34,28 @@ console.log(revStrAnonShort("yam"));
 // TODO: Store an anonymous function in a constant
 // Use arrow syntax to return a random element
 // Multiple lines of code OK
+const randomElement = str => {
+    let index = Math.round(Math.random() * str.length);
+    console.log(index);
+    return str.charAt(index);
+}
+console.log(randomElement("Hello"));
 
+const arrItem = arr => {
+    let index = Math.round(Math.random() * (arr.length - 1));
+    //console.log(index);
+    return arr[index];
+}
 
 // TODO: Create an array of several elements as mock data
 // Call the function and pass in the array
+console.log(arrItem(["This", "is", "javascript"]));
 
 
 // TODO: BONUS: Try to rewrite your function as a single-line short 
 // form arrow function
-
+const arrowFunction = arr =>
+    arr[Math.round(Math.random() * (arr.length - 1))];
 
 // TODO: Test the short form function
+console.log(arrowFunction(["This", "is", "javascript"]));
