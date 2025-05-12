@@ -3,7 +3,7 @@
 /** The Beverage Class **/
 
 /*
-	EXAMPLE: Define a Beverage class and give the constructor three parameters: 
+    EXAMPLE: Define a Beverage class and give the constructor three parameters: 
     name, ounces, and container, then set the properties accordingly.
 
     Add one more property (no parameter) called recycled and set it to false.
@@ -11,13 +11,13 @@
     Add a method called recycle() that sets the recycled property to true 
     and prints a sentence with the name and container as a confirmation.
 
-	Add a method called describe() that prints a sentence to the console 
+    Add a method called describe() that prints a sentence to the console 
     with its name, container, and capacity. The sentence should differ 
     slightly depending on whether it's been recycled or not.
 */
 
 class Beverage {
-	
+
     constructor(name, ounces, container) {
         this.name = name;
         this.ounces = ounces;
@@ -53,20 +53,20 @@ water.describe();
 
 // Recycle the water and then describe it again
 water.recycle();
-water.describe(); 
+water.describe();
 
 
 /** The Juice Class **/
 
 /*
-	EXAMPLE: Define a Juice class as a child of Beverage 
+    EXAMPLE: Define a Juice class as a child of Beverage 
     Use 'extends' and 'super()' where needed
 
     Add two more properties as parameters:
-		- fruits
-		- veggies (make optional with empty array as value) 
+        - fruits
+        - veggies (make optional with empty array as value) 
 	
-	Override the inherited describe() method to use the parent describe()
+    Override the inherited describe() method to use the parent describe()
     but then also include a list of fruits and veggies (one on each line)
 
     Do not override recycled or recycle()
@@ -74,11 +74,11 @@ water.describe();
 
 class Juice extends Beverage {
     constructor(name, ounces, container, fruits, veggies = []) {
-        super(name, ounces, container); 
+        super(name, ounces, container);
         this.fruits = fruits;
         this.veggies = veggies;
     }
-  
+
     describe() {
         super.describe();
         console.log(`It contains the following:`);
@@ -109,12 +109,12 @@ appleJuice.recycle();
 /** The Soda Class **/
 
 /* 
-	Use 'extends' and 'super()' to create the Soda class as 
+    Use 'extends' and 'super()' to create the Soda class as 
     a child of Beverage
 	
- 	Add one more property as a parameter: hasCaffeine
+      Add one more property as a parameter: hasCaffeine
 
- 	Override the inherited describe() method with an entirely new 
+      Override the inherited describe() method with an entirely new 
     sentence that includes the brand and caffeine status
 */
 
@@ -124,7 +124,7 @@ class Soda extends Beverage {
         super(name, ounces, container);
         this.hasCaffeine = hasCaffeine;
     }
-  
+
     describe() {
         let recycledStatus;
         if (this.recycled) {
@@ -158,16 +158,16 @@ sprite.describe();
 // Recycle the Dr. Pepper, then describe it 
 drPepper.recycle();
 drPepper.describe();
-  
+
 
 /** The DietSoda Class **/
 
 /*
-	Use 'extends' and 'super() to create the DietSoda class as a child of Soda.
+    Use 'extends' and 'super() to create the DietSoda class as a child of Soda.
 
- 	Give it all four params from Soda plus a new one, sweetener
+      Give it all four params from Soda plus a new one, sweetener
 
-	Overwrite the describe method, calling the Soda describe and then adding a line that mentions the type of sweetener.
+    Overwrite the describe method, calling the Soda describe and then adding a line that mentions the type of sweetener.
 */
 
 class DietSoda extends Soda {
@@ -176,7 +176,7 @@ class DietSoda extends Soda {
         super(name, ounces, container, hasCaffeine);
         this.sweetener = sweetener;
     }
-        
+
     describe() {
         super.describe();
         console.log(`It is sweetened with ${this.sweetener}.`);
@@ -233,3 +233,40 @@ console.log(cokeZero instanceof Juice);
 */
 
 
+console.log("===== MY WORK =====")
+
+class Milk extends Beverage {
+    constructor(name, ounces, container, source, isNonDairy = false, flavoring = null) {
+        super(name, ounces, container);
+        this.source = source;
+        this.isNonDairy = isNonDairy;
+        this.flavoring = flavoring;
+    }
+    describe() {
+        // console.log(`The ${this.flavoring} ${this.ounces}-oz ${this.container} of ${this.name} is sourced from ${this.source}s.`);
+        super.describe();
+        if (this.isNonDairy) {
+            console.log(`It is sourced from ${this.source}s.`);
+        }
+        if (this.flavoring) {
+            console.log(`It is flavored with ${this.flavoring}.`);
+        } else {
+            console.log("No extra flavors.");
+        };
+    }
+}
+
+let chocMilk = new Milk("chocolate milk", 12, "carton", "cow", false, "chocolate");
+let almondMilk = new Milk("almond milk", 32, "jug", "almond", true);
+let skimMilk = new Milk("skim milk", 20, "bottle");
+
+console.log(chocMilk);
+console.log(almondMilk);
+console.log(skimMilk);
+
+almondMilk.describe(); // have
+almondMilk.recycle();
+almondMilk.describe(); // had
+
+chocMilk.describe();
+skimMilk.describe();
