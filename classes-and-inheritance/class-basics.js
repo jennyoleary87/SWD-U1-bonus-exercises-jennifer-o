@@ -14,7 +14,7 @@
 // Who doesn't love a good doughnut? (We'll go with the shorter spelling for coding purposes.)
 class Donut {
 
-	constructor(type, shape, glazed) { 
+	constructor(type, shape, glazed) {
 		this.type = type; // cake or yeast
 		this.shape = shape; // ring, sphere, twist, bar, hole, etc.
 		this.glazed = glazed; // Boolean true or false
@@ -73,7 +73,7 @@ console.log(mapleBaconBar); // now all three toppings show up
 
 class HouseForSale {
 
-	constructor(type, yearBuilt, listPrice, sqft, bedrooms, bathrooms, garage=false, finishedBasement=false) {
+	constructor(type, yearBuilt, listPrice, sqft, bedrooms, bathrooms, garage = false, finishedBasement = false) {
 		this.type = type;
 		this.yearBuilt = yearBuilt;
 		this.listPrice = listPrice;
@@ -99,7 +99,8 @@ console.log(mansionOnMainStreet);
 
 
 // TODO: Pretend you're a realtor. Create 3-4 more houses, some with and some without optional parameters
-
+let splitLevel = new HouseForSale("split-level", 1973, 398000, 3845, 3, 3, false, true);
+console.log(mansionOnMainStreet);
 
 
 /**** CLASS METHODS ****/
@@ -118,17 +119,17 @@ class Produce {
 		this.unit = unit;
 		this.costPerUnit = costPerUnit;
 		// Here is a method set within the constructor - notice the way it prints out in the console as part of the object.
-		this.describe = function() { 
+		this.describe = function () {
 			console.log(`The ${this.name} is a type of ${this.category} that is currently selling for $${this.costPerUnit} per ${this.unit}.\n`)
-		}; 
+		};
 	}
 
 	// Here is a method set outside the constructor - notice there is no evidence of it when you print the object itself, but you can call it with dot notation all the same. 
 	calculateTotal(quantity) {
 		let totalCost = quantity * this.costPerUnit; // note the syntax to reference costPerUnit
-		let digitsToString = String(Math.floor(totalCost*100)); // remove decimal
+		let digitsToString = String(Math.floor(totalCost * 100)); // remove decimal
 		let n = digitsToString.length;
-		let totalCostFormatted = "$" + digitsToString.slice(0, n-2) + "." + digitsToString.slice(n-2);
+		let totalCostFormatted = "$" + digitsToString.slice(0, n - 2) + "." + digitsToString.slice(n - 2);
 		console.log(`The total cost is ${totalCostFormatted}.\n`);
 	}
 }
@@ -147,7 +148,20 @@ yellowBellPepper.calculateTotal(5); // 5 peppers
 
 // TODO: What's going in your dinner salad tonight? Create 3-4 more objects, then call 
 // describe() and calculateTotal() for each
+let lettuce = new Produce("Lettuce", "vegetable", "each", 1.19);
+console.log(lettuce);
+lettuce.describe();
+lettuce.calculateTotal(4); // 4 heads of lettuce
 
+let tomato = new Produce("Tomato", "vegetable", "each", 0.99);
+console.log(tomato);
+tomato.describe();
+tomato.calculateTotal(2); // 2 tomatoes
+
+let radish = new Produce("Radish", "vegetable", "each", 0.89);
+console.log(radish);
+radish.describe();
+radish.calculateTotal(2); // 2 radishes
 
 
 /**** TIME TO FLY SOLO ****/
@@ -160,7 +174,16 @@ yellowBellPepper.calculateTotal(5); // 5 peppers
 	Write a method outside the constructor called describe() that incorporates all three properties into a sentence and prints it to the console. Remember the syntax you must use to reference the properties that are inside the constructor.
 */
 
-
+class Instrument {
+	constructor(name, category, soundsLike) {
+		this.name = name;
+		this.category = category;
+		this.soundsLike = soundsLike;
+	}
+	describe() {
+		console.log(`The ${this.name} instrument is of the ${this.category} family and sounds like ${this.soundsLike}. \n`);
+	}
+}
 
 // TODO: Once your class is complete, un-comment the lines below to test it out.
 
